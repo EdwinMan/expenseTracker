@@ -1,0 +1,49 @@
+.ExpenseTableContainer{
+    margin: auto;
+    background-color: red;
+    width: 100px;
+    height: 100px;
+    line-height: 90px;
+    text-align: center;
+    overflow: auto;
+}
+
+
+.addNewCat{
+    width: 300px;
+    margin: auto ;
+}
+
+.btn{
+    margin-top: auto;
+}
+
+.listCatContainer{
+    margin: auto;
+    margin-left: 10px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.listCat{
+    margin: 15px;
+}
+
+
+.tableDisplayer{
+    margin-top: -80px;
+}
+
+.sansserif {
+    margin-top: -50px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 80px;
+    font-weight: bolder;
+    text-shadow: 4px 4px 8px rgb(141, 138, 138);
+  }
+
+
+  .tableAlignment{
+     text-align: center;
+     justify-content: center;
+  }

@@ -1,23 +1,72 @@
-import logo from './logo.svg';
+import React, {useState, useCallback} from 'react';
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  Redirect
+} from "react-router-dom";
+
 import './App.css';
+import Auth from './MainPages/Auth'
+import MainApp from './MainPages/MainApp'
+import { AuthContext } from './context/auth-context'
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [clientID, setClientID] = useState(0);
+
+  const login = useCallback( ()=> {
+    setIsLoggedIn(true);
+  })
+
+  const logout = useCallback( ()=> {
+    setIsLoggedIn(false);
+  })
+
+  const setUserID = useCallback( (id)=> {
+    setClientID(id);
+  })
+
+  // function setUserID(id){
+  //   setClientID(id)
+  // }
+
+
+  let routes;
+
+  if(isLoggedIn){
+    routes = (
+      <React.Fragment>
+        <Route path="/home">
+          <MainApp/>
+        </Route>
+        <Redirect to="/home" />
+      </React.Fragment>
+    );
+  }else {
+    routes = (
+      <React.Fragment>
+        <Route exact path="/auth">
+          <Auth/>
+        </Route>
+        <Redirect to="/auth" />
+      </React.Fragment>
+    );
+  }
+
+  return (<div className="App">
+    <AuthContext.Provider
+    value={ { isLoggedIn:isLoggedIn, login: login, logout:logout, ClientID:clientID, clientIDsetter:setUserID } }
+    >
+      <Router> 
+        <Switch>
+          {routes}
+        </Switch>
+      </Router>
+    </AuthContext.Provider>
     </div>
   );
 }

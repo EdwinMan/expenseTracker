@@ -1,0 +1,31 @@
+.authentication__header {
+    color: white;
+    text-align: center;
+  }
+  
+  .authentication {
+    width: 90%;
+    max-width: 25rem;
+    margin: 7rem auto;
+    text-align: center;
+  }
+  
+  .authentication form {
+    margin-bottom: 1rem;
+  }
+
+  .authElement{
+      margin-top: 60px;
+      margin-bottom: 60px;
+  }
+
+  .authContainer{
+
+      border: 5px solid gainsboro;
+      width: 500px;
+      margin: auto;
+      margin-top: 130px ;
+      padding: 60px;
+      border-radius: 60px;
+      box-shadow: 8px 8px 12px gainsboro;
+  }
